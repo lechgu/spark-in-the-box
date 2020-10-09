@@ -1,4 +1,5 @@
 #! /bin/bash
+export SPARK_DIST_CLASSPATH=$(hadoop classpath)
 if [ "$1" -eq 0 ]; then
     spark-class org.apache.spark.deploy.master.Master --ip 0.0.0.0 --port 7077 --webui-port 8080
 else
