@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  master:
+    build: .
+    ports:
+      - 7077:7077
+      - 8080:8080
+    volumes:
+      - sfs:/sfs
+    command: spark-class org.apache.spark.deploy.master.Master --ip 0.0.0.0 --port 7077 --webui-port 8080
+
+  worker:
+    build: .
+    ports:
+      - 8080
+    command: spark-class org.apache.spark.deploy.worker.Worker --webui-port 8080 spark://master:7077
+
+  driver:
+    build: .
+    ports:
+      - 8888:8888
+    volumes:
+      - sfs:/sfs
+    command: bash /jupyter.sh &
+volumes:
+  sfs:
