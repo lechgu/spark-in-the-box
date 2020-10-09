@@ -6,9 +6,9 @@ RUN apt-get update && \
     apt-get autoremove && \
     python3 -m venv /venv
 
-COPY dist/* ./
-
-RUN tar -xzf hadoop-2.7.7.tar.gz && \
+RUN wget https://archive.apache.org/dist/hadoop/common/hadoop-2.7.7/hadoop-2.7.7.tar.gz && \
+    wget https://archive.apache.org/dist/spark/spark-3.0.1/spark-3.0.1-bin-without-hadoop.tgz && \
+    tar -xzf hadoop-2.7.7.tar.gz && \
     mv hadoop-2.7.7 /hadoop && \
     rm hadoop-2.7.7.tar.gz && \
     tar -xzf spark-3.0.1-bin-without-hadoop.tgz && \
