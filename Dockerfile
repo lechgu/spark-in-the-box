@@ -17,8 +17,9 @@ RUN tar -xzf hadoop-2.7.7.tar.gz && \
 
 COPY core-site.xml hadoop-env.sh /hadoop/etc/hadoop/
 
-COPY requirements.txt jupyter.sh ./
-RUN /venv/bin/pip install -r requirements.txt
+COPY requirements.txt spark.sh jupyter.sh ./
+RUN /venv/bin/pip install -r requirements.txt && \
+    chmod +x /jupyter.sh /spark.sh
 
 
 

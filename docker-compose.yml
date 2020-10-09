@@ -7,20 +7,21 @@ services:
       - 8080:8080
     volumes:
       - sfs:/sfs
-    command: spark-class org.apache.spark.deploy.master.Master --ip 0.0.0.0 --port 7077 --webui-port 8080
+    command: /spark.sh 0
 
   worker:
     build: .
     ports:
       - 8080
-    command: spark-class org.apache.spark.deploy.worker.Worker --webui-port 8080 spark://master:7077
+    command: /spark.sh 1
 
   driver:
     build: .
     ports:
       - 8888:8888
     volumes:
+      - .:/app
       - sfs:/sfs
-    command: bash /jupyter.sh &
+    command: /jupyter.sh
 volumes:
   sfs:
