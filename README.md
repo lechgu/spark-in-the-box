@@ -9,8 +9,12 @@ Docker with docker-compose installed.
 
 #### usage
 
-`docker-compose build docker-compose up -d`
-The build stage might take a few minutes, depending on your Internet connection.
+```
+docker-compose build
+docker-compose up -d
+```
+
+PThe build stage might take a few minutes, depending on your Internet connection.
 Once the containers are started:
 
 - access jupyter on port 8888
@@ -19,3 +23,7 @@ Once the containers are started:
 #### notes
 
 the cluster has a master node, a worker node and a driver node. Number of worker nodes can be adjusted by editing docker-compose.yml
+
+```
+
+```
