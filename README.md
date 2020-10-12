@@ -1,6 +1,7 @@
 ## Spark in the box
 
 This is a turnkey solution to create a local Spark cluster for experimenting with pyspark.
+The Azure Blob Storage ('wasbs://) is enabled.
 
 #### Requirements
 
