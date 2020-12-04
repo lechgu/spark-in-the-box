@@ -6,7 +6,7 @@ services:
       - 7077:7077
       - 8080:8080
     volumes:
-      - sfs:/sfs
+      - ./src:/src
     command: /spark.sh 0
 
   worker:
@@ -21,7 +21,12 @@ services:
       - 8888:8888
     volumes:
       - ./notebooks:/app
-      - sfs:/sfs
+      - ./src:/src
     command: /jupyter.sh
-volumes:
-  sfs:
+  
+  builder:
+    image: "hseeberger/scala-sbt:8u222_1.3.5_2.13.1"
+    volumes:
+    - ./src:/src
+    command: tail -F anything
+
