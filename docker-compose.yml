@@ -24,9 +24,3 @@ services:
       - ./src:/src
     command: /jupyter.sh
   
-  builder:
-    image: "hseeberger/scala-sbt:8u222_1.3.5_2.13.1"
-    volumes:
-    - ./src:/src
-    command: tail -F anything
-
